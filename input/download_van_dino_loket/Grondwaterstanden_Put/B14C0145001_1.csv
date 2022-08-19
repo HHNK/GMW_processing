@@ -1,0 +1,33 @@
+Titel:,,,,,,,,,,,
+Gebruikersnaam:,,,,,,,,,,,
+Periode aangevraagd:,01-01-1800,tot:,28-10-2021,,,,,,,,
+Gegevens beschikbaar:,16-09-1996,tot:,28-05-1997,,,,,,,,
+Datum: ,28-10-2021,,,,,,,,,,
+Referentie:,NAP,,,,,,,,,,
+
+NAP:,Normaal Amsterdams Peil,,,,,,,,,,
+MV:,Maaiveld,,,,,,,,,,
+MP:,Meetpunt,,,,,,,,,,
+
+Locatie,Filternummer,Externe aanduiding,X-coordinaat,Y-coordinaat,Maaiveld (cm t.o.v. NAP),Datum maaiveld gemeten,Startdatum,Einddatum,Meetpunt (cm t.o.v. NAP),Meetpunt (cm t.o.v. MV),Bovenkant filter (cm t.o.v. NAP),Onderkant filter (cm t.o.v. NAP)
+B14C0145,001,14CP7057,105790,529750,-4,07-04-1994,07-04-1994,28-12-1999,-7,-3,-94,-144
+
+
+Locatie,Filternummer,Peildatum,Stand (cm t.o.v. MP),Stand (cm t.o.v. MV),Stand (cm t.o.v. NAP),Bijzonderheid,Opmerking,,,
+B14C0145,001,16-09-1996,105,108,-112,,,,,,
+B14C0145,001,30-09-1996,106,109,-113,,,,,,
+B14C0145,001,15-10-1996,99,102,-106,,,,,,
+B14C0145,001,26-10-1996,68,71,-75,,,,,,
+B14C0145,001,13-11-1996,38,41,-45,,,,,,
+B14C0145,001,28-11-1996,28,31,-35,,,,,,
+B14C0145,001,13-12-1996,19,22,-26,,,,,,
+B14C0145,001,14-01-1997,65,68,-72,,,,,,
+B14C0145,001,28-01-1997,63,66,-70,,,,,,
+B14C0145,001,14-02-1997,28,31,-35,,,,,,
+B14C0145,001,03-03-1997,36,39,-43,,,,,,
+B14C0145,001,14-03-1997,46,49,-53,,,,,,
+B14C0145,001,28-03-1997,42,45,-49,,,,,,
+B14C0145,001,14-04-1997,70,73,-77,,,,,,
+B14C0145,001,29-04-1997,55,58,-62,,,,,,
+B14C0145,001,14-05-1997,55,58,-62,,,,,,
+B14C0145,001,28-05-1997,79,82,-86,,,,,,

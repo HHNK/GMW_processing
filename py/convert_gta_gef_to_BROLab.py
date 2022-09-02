@@ -63,26 +63,51 @@ for index, row in df.iterrows():
 df_gef = pd.DataFrame()
 for filepath in glob.iglob('../input/GEF/*.gef'):
     
-    putnaam = os.path.basename(filepath).split(".")[0]
-    print(putnaam)
+    gefnaam = os.path.basename(filepath).split(".")[0]
+    print(gefnaam)
 
     gef = GEF()
     gef.read(filepath,None)
 
-    # lengte zandvang peilbuis k = #MEASUREMENTVAR = 26k-12,
+    
     for k in range(1,4): # for 3 filters max
-        i = 26*k - 12       
+        i = 26*k - 12   # lengte zandvang peilbuis #MEASUREMENTVAR = 26k-12
+        j = 26*k - 9    # bovenkant filter         #MEASUREMENTVAR = 26k-9
         try:
-            gefnaam_nr = "{}_{}".format(putnaam,k)
-            print (gefnaam_nr)
-            value, unit, description = gef.MEASURES.measurementsVar[i]
-            print ("{} = {} in {}".format(description,value,unit))
-            new_row = {"gefnaam_nr": gefnaam_nr, "Zandvanglengte (meters)": value}
+            
+            zandvanglengte, unit, description = gef.MEASURES.measurementsVar[i]
+            print ("{} = {} in {}".format(description,zandvanglengte,unit))
+            bov_f, unit, description = gef.MEASURES.measurementsVar[j]
+            print ("{} = {} in {}".format(description,bov_f,unit))
+            new_row = {
+                "gefnaam": gefnaam,
+                "Zandvanglengte (meters)": zandvanglengte,
+                "bovenkant filter (gef)": float(bov_f),
+                "peilbuis": description,
+                }
             df_gef = df_gef.append(new_row, ignore_index=True)
         except KeyError:
             pass
         except Exception as e:
             print (e)
+    
+    # sort by Putnaam and bovenkant_filter
+    df_gef = df_gef.sort_values(by=['gefnaam', 'bovenkant filter (gef)'], ascending=[True, True])
+
+    # calculate filternummer
+    i = 0
+    next_put = False
+    previous_Putnaam = ""
+    for index, row in df_gef.iterrows():
+        next_put = True if row['gefnaam'] != previous_Putnaam else False
+        if not next_put:
+            i += 1
+        else:
+            i = 1
+        ## row['Filternummer'] = i   doesnt work, instead use df.loc[] for update
+        df_gef.loc[index,'Filternummer (gef)'] = i
+        df_gef.loc[index,'gefnaam_nr'] = "{}_{}".format(row['gefnaam'],i)
+        previous_Putnaam = row['gefnaam']
 
 # %%
 
@@ -107,8 +132,14 @@ df['Putnaam_nr'] = df['Putnaam'] + "_" + df['Filternummer'].apply(lambda x:int(x
 
 # %%
 # keep BROLab fields and additional fields
-additional_fields = ['Putnaam_nr', 'gefnaam_nr']
+additional_fields = ['Putnaam_nr', 'gefnaam_nr', 'bovenkant filter (gef)', 'Filternummer (gef)']
 df.to_excel('../output/GTA_result.xlsx', columns=list(df_puttenlijst.columns)+additional_fields)
 
 
+# %%
+columns=list(df_puttenlijst.columns)+additional_fields
+# %%
+for column in columns:
+    if column not in df.columns:
+        print (column)
 # %%

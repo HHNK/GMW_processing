@@ -132,14 +132,14 @@ df['Putnaam_nr'] = df['Putnaam'] + "_" + df['Filternummer'].apply(lambda x:int(x
 
 # %%
 # keep BROLab fields and additional fields
-additional_fields = ['Putnaam_nr', 'gefnaam_nr', 'bovenkant filter (gef)', 'Filternummer (gef)']
+additional_fields = ['Putnaam_nr', 'gefnaam_nr', 'bovenkant filter (gef)', 'Filternummer (gef)', 'GTA.GTA_PEILBUISGEGEVENS.PEILBUISIDENT']
 df.to_excel('../output/GTA_result.xlsx', columns=list(df_puttenlijst.columns)+additional_fields)
 
 
-# %%
-columns=list(df_puttenlijst.columns)+additional_fields
-# %%
-for column in columns:
-    if column not in df.columns:
-        print (column)
-# %%
+# # %%
+# columns=list(df_puttenlijst.columns)+additional_fields
+# # %%
+# for column in columns:
+#     if column not in df.columns:
+#         print (column)
+# # %%

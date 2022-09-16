@@ -16,7 +16,7 @@ import pandas as pd
 
 # %%
 # read inputs
-df_AD = pd.read_excel('../output/ArtDiver_result.xlsx', engine="openpyxl")
+df_AD = pd.read_excel('../output/ArtDiver_result_combined.xlsx', engine="openpyxl")
 df_GTA = pd.read_excel('../output/GTA_result.xlsx', engine="openpyxl")
 
 # %%
